@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  dashboard-client
+  labels:
+    app: dashboard-client
+spec:
+  selector:
+    matchLabels:
+      app: dashboard-client
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dashboard-client
+    spec:
+      containers:
+        - name: dashboard-client
+          image: "farestalbi/dashboard-client:1" 
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: '250m'
+            requests:
+              memory: 128Mi
+              cpu: '80m'
+
